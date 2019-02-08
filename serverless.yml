@@ -1,0 +1,28 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: personio-poc
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: dev
+  region: eu-central-1
+
+custom: ${s3:personio-lambda-poc/secrets.yml}
+
+environment: ${self.custom.ENVIRONMENT}
+
+functions:
+  main:
+    handler: main.handler
